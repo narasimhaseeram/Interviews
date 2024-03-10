@@ -1,0 +1,96 @@
+1.How to restore to last version in terrafrom while using code in terraform
+
+There is no way to roll back to a previous state as described in a state file in Terraform today. Terraform always plans changes with the goal of moving from the prior state (the latest state snapshot) to the goal state represented by the configuration. Terraform also uses the configuration for information that is not tracked in the state, such as the provider configurations.
+
+The usual way to represent "rolling back" in Terraform is to put your configuration in version control and commit before each change, and then you can use your version control system's features to revert to an older configuration if needed.
+
+Not all changes can be rolled back purely by reverting a VCS change though. For example, if you added a new provider block and resources for that provider all in one commit and then applied the result, in order to roll back you'd need to change the configuration to still include the provider block but not include any of the resource blocks, so you'd need to adjust the configuration during the revert. Terraform will then use the remaining provider block to configure the provider to run the destroy actions, after which you can finally remove the provider block too.
+
+
+
+2.How to SSH a node in Azure kubernetes cluster.
+
+https://www.youtube.com/results?search_query=how+to+connect+windows+nodes+in+aks
+
+
+3.How to connect to a AKS cluster in command line
+
+az aks get-credentials — resource-group geospatial-analytics-group — name xyz-cluster
+
+
+4.Node is in not ready state , how you troubleshoot
+
+https://komodor.com/learn/how-to-fix-kubernetes-node-not-ready-error/#:~:text=Common%20reasons%20for%20a%20Kubernetes,networking%20agent%20on%20the%20node).
+
+
+5.What are Multistage Docker images
+
+
+6.Difference between CMD and Entrypoint
+
+CMD - when you use CMD in DockerFile , we can change by passing values for command and string while we are starting the container. So they can be replaced by passing new values while running the docker container. Below is the command to replace.
+
+dokcer run -d localhost/nginx:2.5 python app1.py
+
+ENTRYPOINT - When you use entrypoint in a docker file, you can't directly change them by passing values while running the container, instead you have to use flag --entrypoint to overwrite values.
+
+
+7.Let's say we have multiple entry points which one takes precedence.
+
+Though you have multiple entrypoints in docker file , the last entry will take effect. And it's recommanded to use one process for one container as per docker documentation.
+
+8.How you manage terraform code in realtime scenario
+
+We use gitlab / git hub source code repo to manage our terrafrom code so that every one form the team can be manage it remotely in a collabirated way.
+
+
+9.How pod to pod communication in the same node as well as different node
+
+It depends on n/w design you are using, if you are using AZURE CNI as network solution each pod will have a IP from subnet, so thay can communication each other, also if difference application to be communicated , we can establish service to service communication in kubernetes.
+
+
+10.CIDR stands for
+Classless Inter-Domain Routing
+
+
+11. what all are the terraform commands you use?
+
+https://justinoconnorcodes.files.wordpress.com/2021/09/terraform-cheatsheet-1.pdf
+
+
+12. write sample docker file
+
+FROM openjdk:8-jdk-alpine as builder
+RUN mkdir -p /app/source
+COPY . /app/source
+WORKDIR /app/source
+RUN ./mvnw clean package
+
+
+FROM builder
+COPY --from=builder /app/source/target/*.jar /app/app.jar
+EXPOSE 8080
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom", "-jar", "/app/app.jar"]
+
+
+13. Write a sample terrafrom file
+
+
+provider "azurerm" {
+  version = "~>2.0"
+  features {}
+}
+
+resource "azurerm_resource_group" "rg" {
+  name = "<your_resource_group_name>"
+  location = "<your_resource_group_location>"
+}
+
+
+14. How to schedule a pod in specific node in the cluster.
+
+You can control which node a specific pod is scheduled on by using node selectors and labels. To use node selectors and labels, first label the node to avoid pods being descheduled, then add the node selector to the pod. You cannot add a node selector directly to an existing scheduled pod.
+
+
+
+Kalyani called , and need to check email from Asma for JD

@@ -1,0 +1,41 @@
+𝐇𝐞𝐫𝐞 𝐚𝐫𝐞 𝐬𝐨𝐦𝐞 𝐜𝐨𝐦𝐦𝐨𝐧 𝐓𝐞𝐫𝐫𝐚𝐟𝐨𝐫𝐦 𝐞𝐫𝐫𝐨𝐫𝐬 𝐚𝐧𝐝 𝐭𝐡𝐞𝐢𝐫 𝐬𝐢𝐦𝐩𝐥𝐞 𝐬𝐨𝐥𝐮𝐭𝐢𝐨𝐧𝐬:
+
+1. "𝐀𝐜𝐜𝐞𝐬𝐬 𝐃𝐞𝐧𝐢𝐞𝐝" 𝐨𝐫 𝐀𝐮𝐭𝐡𝐞𝐧𝐭𝐢𝐜𝐚𝐭𝐢𝐨𝐧 𝐄𝐫𝐫𝐨𝐫𝐬
+  - 𝐄𝐫𝐫𝐨𝐫: Issues with AWS, GCP, or other cloud provider credentials.
+  - 𝐒𝐨𝐥𝐮𝐭𝐢𝐨𝐧: Double-check your credentials and ensure they are correctly configured. Refresh or recreate your credentials if necessary.
+
+2. "𝐑𝐞𝐬𝐨𝐮𝐫𝐜𝐞 𝐀𝐥𝐫𝐞𝐚𝐝𝐲 𝐄𝐱𝐢𝐬𝐭𝐬" 𝐄𝐫𝐫𝐨𝐫*
+  - 𝐄𝐫𝐫𝐨𝐫: Attempting to create a resource that already exists.
+  - 𝐒𝐨𝐥𝐮𝐭𝐢𝐨𝐧: Check if the resource already exists or use Terraform's `import` command to bring existing resources under Terraform management.
+
+3. "𝐓𝐞𝐫𝐫𝐚𝐟𝐨𝐫𝐦 𝐈𝐧𝐢𝐭" 𝐅𝐚𝐢𝐥𝐬
+  - 𝐄𝐫𝐫𝐨𝐫: `terraform init` fails to download providers or modules.
+  - 𝐒𝐨𝐥𝐮𝐭𝐢𝐨𝐧: Ensure your Terraform configuration is correct and has the necessary providers/modules.
+
+Run `𝐭𝐞𝐫𝐫𝐚𝐟𝐨𝐫𝐦 𝐢𝐧𝐢𝐭` again.
+
+4. "𝐑𝐞𝐬𝐨𝐮𝐫𝐜𝐞 𝐍𝐨𝐭 𝐅𝐨𝐮𝐧𝐝" 𝐄𝐫𝐫𝐨𝐫
+  - 𝐄𝐫𝐫𝐨𝐫: Referencing a resource that does not exist in your configuration.
+  - 𝐒𝐨𝐥𝐮𝐭𝐢𝐨𝐧: Check your Terraform code for typos or verify that the resource is defined correctly.
+
+5. "𝐕𝐚𝐫𝐢𝐚𝐛𝐥𝐞 𝐍𝐨𝐭 𝐃𝐞𝐟𝐢𝐧𝐞𝐝" 𝐄𝐫𝐫𝐨𝐫
+  - 𝐄𝐫𝐫𝐨𝐫: Using a variable that is not defined in your Terraform configuration.
+  - 𝐒𝐨𝐥𝐮𝐭𝐢𝐨𝐧: Define the missing variable in your configuration or provide a default value.
+
+6. "𝐓𝐞𝐫𝐫𝐚𝐟𝐨𝐫𝐦 𝐏𝐥𝐚𝐧 𝐒𝐡𝐨𝐰𝐬 𝐔𝐧𝐢𝐧𝐭𝐞𝐧𝐝𝐞𝐝 𝐂𝐡𝐚𝐧𝐠𝐞𝐬"
+  - *𝐄𝐫𝐫𝐨𝐫: `terraform plan` displays changes you didn't expect.
+  - 𝐒𝐨𝐥𝐮𝐭𝐢𝐨𝐧: Review your configuration for discrepancies and ensure you haven't made any unintended changes. Verify variables and inputs.
+
+7. "𝐂𝐨𝐧𝐜𝐮𝐫𝐫𝐞𝐧𝐜𝐲 𝐄𝐫𝐫𝐨𝐫" 𝐨𝐫 "𝐒𝐭𝐚𝐭𝐞 𝐋𝐨𝐜𝐤𝐢𝐧𝐠 𝐄𝐫𝐫𝐨𝐫"
+  - 𝐄𝐫𝐫𝐨𝐫: Multiple users or processes trying to modify the same state file simultaneously.
+  - 𝐒𝐨𝐥𝐮𝐭𝐢𝐨𝐧:Use remote state storage (e.g., AWS S3 etc) to store your state files, and set up proper locking mechanisms to prevent concurrent modifications.
+
+8. "𝐌𝐨𝐝𝐮𝐥𝐞 𝐍𝐨𝐭 𝐅𝐨𝐮𝐧𝐝" 𝐄𝐫𝐫𝐨𝐫
+  - 𝐄𝐫𝐫𝐨𝐫: Unable to locate or download a Terraform module.
+  - 𝐒𝐨𝐥𝐮𝐭𝐢𝐨𝐧: Verify the module's source URL and make sure it's accessible. Ensure you're using the correct module source and version.
+
+9. "𝐏𝐫𝐨𝐯𝐢𝐝𝐞𝐫 𝐂𝐨𝐧𝐟𝐢𝐠𝐮𝐫𝐚𝐭𝐢𝐨𝐧 𝐄𝐫𝐫𝐨𝐫"
+  - 𝐄𝐫𝐫𝐨𝐫:Misconfigured provider block in your Terraform configuration.
+  -𝐒𝐨𝐥𝐮𝐭𝐢𝐨𝐧: Review and correct the provider configuration. Make sure the required authentication and connection settings are provided.
+
+When encountering Terraform errors, it's crucial to read the error messages carefully, as they often provide insights into the problem. pls fallow the official Documentations as well for more
