@@ -90,7 +90,3 @@ resource "azurerm_resource_group" "rg" {
 14. How to schedule a pod in specific node in the cluster.
 
 You can control which node a specific pod is scheduled on by using node selectors and labels. To use node selectors and labels, first label the node to avoid pods being descheduled, then add the node selector to the pod. You cannot add a node selector directly to an existing scheduled pod.
-
-
-
-Kalyani called , and need to check email from Asma for JD
