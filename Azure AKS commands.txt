@@ -1,0 +1,31 @@
+#Create a resource group using the az group create command.
+az group create --name myResourceGroup --location eastus
+
+#Create an AKS cluster using the az aks create command and enable and configure the cluster autoscaler on the node pool for the cluster using the --enable-cluster-autoscaler parameter and specifying a node --min-count and --max-count.
+az aks create \
+--resource-group myResourceGroup \
+--name myAKSCluster \
+--node-count 1 \
+--vm-set-type VirtualMachineScaleSets \
+--load-balancer-sku standard \
+--enable-cluster-autoscaler \
+--min-count 1 \
+--max-count 3
+
+#Connect to the cluster:
+az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
+
+
+#Enable the cluster autoscaler on an existing cluster
+az aks update --resource-group myResourceGroup --name myAKSCluster --enable-cluster-autoscaler --min-count 1 --max-count 3
+
+
+
+# Set max surge for a new node pool
+az aks nodepool add -n mynodepool -g MyResourceGroup --cluster-name MyManagedCluster --max-surge 33%
+
+# Update max surge for an existing node pool 
+az aks nodepool update -n mynodepool -g MyResourceGroup --cluster-name MyManagedCluster --max-surge 5
+
+
+az aks create --resource-group myResourceGroup --name myAKSCluster --auto-upgrade-channel stable --generate-ssh-keys
