@@ -1,0 +1,79 @@
+To create a custom dashboard in Grafana to monitor an application deployed in Azure Kubernetes Service (AKS) for response time, latency, and failed connections, follow these steps:
+
+1. **Data Source Configuration**:
+   - Ensure that you have configured Grafana to connect to your data source, such as Prometheus or Azure Monitor.
+   - For AKS, Prometheus is commonly used for monitoring Kubernetes clusters. Make sure Prometheus is configured to scrape metrics from your application pods.
+
+2. **Dashboard Creation**:
+   - Log in to Grafana and navigate to the Dashboards section.
+   - Click on "New Dashboard" to create a new dashboard.
+   
+3. **Panel Creation**:
+   - Click on "Add panel" to add a new panel.
+   - Choose the appropriate visualization type for your metrics (e.g., Graph, Singlestat, Table).
+   
+4. **Query Configuration**:
+   - Configure your query to retrieve the desired metrics. For example:
+     - For response time and latency, you can use metrics like `http_request_duration_seconds`.
+     - For failed connections, you can use metrics like `http_requests_total` and filter for HTTP status codes indicating failures (e.g., 4xx, 5xx).
+   - Specify the appropriate labels and filters based on your application's metrics.
+
+5. **Visualization Settings**:
+   - Customize the visualization settings based on your preferences, such as axis labels, legend formatting, and thresholds for alerting.
+
+6. **Repeat Steps 3-5 for Additional Panels**:
+   - Create separate panels for response time, latency, and failed connections to visualize each metric independently.
+   - You can also create additional panels for related metrics or different aspects of your application's performance.
+
+7. **Dashboard Layout**:
+   - Arrange the panels on the dashboard to provide a clear overview of your application's performance.
+   - Consider grouping related panels together and arranging them logically for easy monitoring.
+
+8. **Save and Share**:
+   - Once you've configured your dashboard, save it and give it a descriptive name.
+   - You can share the dashboard with your team members or stakeholders for collaborative monitoring.
+
+9. **Alerting**:
+   - Set up alerts to notify you when certain thresholds are breached, such as high response times or an increase in failed connections.
+   - Configure alert conditions and notification channels to ensure timely awareness of issues.
+
+By following these steps, you can create a custom Grafana dashboard to monitor your application deployed in Azure Kubernetes for response time, latency, and failed connections, providing valuable insights into its performance and health.
+
+
+
+
+------------(alert configure)----------
+
+To configure alerts in Grafana, follow these steps:
+
+1. **Set up a Notification Channel**:
+   - Navigate to the "Alerting" section in Grafana settings.
+   - Click on "Notification channels" and then "Add Channel."
+   - Choose the appropriate notification channel type, such as Email, Slack, Microsoft Teams, etc.
+   - Configure the required settings for the selected notification channel, like email address, Slack webhook URL, etc.
+   - Save the notification channel.
+
+2. **Create an Alert Rule**:
+   - Go to the dashboard containing the panel for which you want to set up an alert.
+   - Click on the panel's title and select "Edit."
+   - In the panel editor, click on the "Alert" tab.
+   - Click on "Create Alert."
+   - Define the conditions for triggering the alert based on your metrics. For example, you can set thresholds for response time, latency, or failed connections.
+   - Specify the evaluation frequency and for how long the conditions must be met before triggering the alert.
+   - Configure the notification settings by selecting the notification channel created in step 1.
+   - Provide a name and description for the alert rule.
+   - Save the alert rule.
+
+3. **Test the Alert** (Optional):
+   - To ensure that the alerting configuration is working correctly, you can simulate a condition that would trigger the alert.
+   - Manually modify your metrics data or temporarily adjust the alert conditions to trigger the alert.
+   - Verify that you receive notifications through the configured notification channel.
+
+4. **Fine-tune Alert Settings** (Optional):
+   - Adjust the alert conditions and thresholds based on your application's performance requirements and acceptable thresholds.
+   - Experiment with different evaluation frequencies and notification strategies to optimize alert responsiveness and minimize false positives.
+
+5. **Repeat for Additional Alerts**:
+   - Repeat the above steps for each metric or aspect of your application that requires monitoring and alerting.
+
+By following these steps, you can configure alerts in Grafana to notify you when specific conditions are met, such as high response times, latency, or increased failed connections, helping you proactively address potential issues with your application's performance or availability.
